@@ -231,6 +231,18 @@
       var versionTPL = lay('#version')[0].innerHTML;
       lay('#version').html(layui.laytpl(versionTPL).render({}))
     });
+      // 使用fetch API发起异步请求读取外部md文件
+      fetch('marked/text01.md')
+   .then(response => response.text())
+   .then(mdText => {
+      // 将读取到的Markdown文本传递给marked.parse进行解析转换为HTML
+      const htmlContent = marked.parse(mdText);
+      // 获取页面中id为content的元素，并将转换后的HTML设置进去
+      document.getElementById('content1').innerHTML = htmlContent;
+    })
+   .catch(error => {
+      console.error('读取文件出现错误：', error);
+    });
     </script>
   </body>
 </html>  
