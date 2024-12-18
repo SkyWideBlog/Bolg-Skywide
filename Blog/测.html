@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo</title>
+  <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+  <link href="layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<div class="layui-tab" lay-filter="test-hash">
+  <ul class="layui-tab-title">
+    <li class="layui-this" lay-id="11">标签1</li>
+    <li lay-id="22">标签2</li>
+    <li lay-id="33">标签3</li>
+    <li lay-id="44">标签4</li>
+    <li lay-id="55">标签5</li>
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+      <div class="layui-bg-gray" style="padding: 16px;">
+        <div class="layui-row layui-col-space15">
+          <div class="layui-col-md6">
+            <div class="layui-card">
+              <div class="layui-card-header">部署Kubernetes系统</div>
+              <div class="layui-card-body">
+                卡片式面板面板通常用于非白色背景色的主体内<br>
+                从而映衬出边框投影
+              </div>
+            </div>
+          </div>
+          <div class="layui-col-md6">
+            <div class="layui-card">
+              <div class="layui-card-header">卡片面板</div>
+              <div class="layui-card-body">
+                结合 layui 的栅格系统<br>
+                轻松实现响应式布局
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-tab-item">内容-2</div>
+    <div class="layui-tab-item">内容-3</div>
+    <div class="layui-tab-item">内容-4</div>
+    <div class="layui-tab-item">内容-5</div>
+  </div>
+</div>
+  
+<!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
+<script src="layui/layui.js"></script>
+<script>
+layui.use(function(){
+  var element = layui.element;
+  
+  // hash 地址定位
+  var hashName = 'tabid'; // hash 名称
+  var layid = location.hash.replace(new RegExp('^#'+ hashName + '='), ''); // 获取 lay-id 值
+    
+  // 初始切换
+  element.tabChange('test-hash', layid);
+  // 切换事件
+  element.on('tab(test-hash)', function(obj){
+    location.hash = hashName +'='+ this.getAttribute('lay-id');
+  });
+});
+</script>
+
+</body>
+</html>

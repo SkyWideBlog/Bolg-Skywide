@@ -1,0 +1,23 @@
+/* 轮播图图片css */
+.lunbotu01{
+    background-image: url('layui/img/lunbotu01.jpg');
+    background-size: cover; /* 可根据需求调整图片展示的尺寸适配方式，cover是铺满等比缩放等 */
+    background-position: center; /* 图片在元素内的定位，这里设置居中 */
+    background-repeat: repeat; /* 不重复平铺图片 */
+}
+.lunbotu02{
+    background-image: url('layui/img/lunbotu02.jpg');
+    background-size: cover; /* 可根据需求调整图片展示的尺寸适配方式，cover是铺满等比缩放等 */
+    background-position: center; /* 图片在元素内的定位，这里设置居中 */
+    background-repeat: repeat; /* 不重复平铺图片 */
+}
+.lunbotu03{
+    background-image: url('layui/img/lunbotu03.jpg');
+    background-size: cover; /* 可根据需求调整图片展示的尺寸适配方式，cover是铺满等比缩放等 */
+    background-position: center; /* 图片在元素内的定位，这里设置居中 */
+    background-repeat: repeat; /* 不重复平铺图片 */
+}
+/* 自定义卡片背景颜色 */
+.Card_background{
+    background-color: bisque;
+}
