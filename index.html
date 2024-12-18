@@ -42,7 +42,7 @@
                 <div class="layui-col-md6">
                   <div class="layui-card">
                     <div class="layui-card-header">部署Kubernetes系统</div>
-                    <div id="content">
+                    <div id="content1">
                       # 这是一个标题
                       这是一段**Markdown**格式的文本。
                     </div>
@@ -138,6 +138,20 @@
     <script src="layui/layui.js"></script>
     <script src="marked/marked.min.js"></script>
     <script>
+    // 使用fetch API发起异步请求读取外部md文件
+    fetch('marked/text01.md')
+   .then(response => response.text())
+   .then(mdText => {
+      // 将读取到的Markdown文本传递给marked.parse进行解析转换为HTML
+      const htmlContent = marked.parse(mdText);
+      // 获取页面中id为content的元素，并将转换后的HTML设置进去
+      document.getElementById('content1').innerHTML = htmlContent;
+    })
+   .catch(error => {
+      console.error('读取文件出现错误：', error);
+    });
+    </script>
+    <script>
     layui.use(function() {
       // 获得需要的内置组件
       var layer = layui.layer; // 弹层
@@ -230,18 +244,6 @@
       // 显示 Layui 版本
       var versionTPL = lay('#version')[0].innerHTML;
       lay('#version').html(layui.laytpl(versionTPL).render({}))
-    });
-      // 使用fetch API发起异步请求读取外部md文件
-      fetch('marked/text01.md')
-   .then(response => response.text())
-   .then(mdText => {
-      // 将读取到的Markdown文本传递给marked.parse进行解析转换为HTML
-      const htmlContent = marked.parse(mdText);
-      // 获取页面中id为content的元素，并将转换后的HTML设置进去
-      document.getElementById('content1').innerHTML = htmlContent;
-    })
-   .catch(error => {
-      console.error('读取文件出现错误：', error);
     });
     </script>
   </body>
