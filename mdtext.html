@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>展示外部Markdown文件内容</title>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // 使用fetch获取外部md文件内容
+        fetch('maked/text01.md') // 将这里的'your_file.md'替换为实际的外部Markdown文件名及路径，注意路径要正确且要考虑跨域等问题
+          .then(response => response.text())
+          .then(mdText => {
+                // 将获取到的Markdown文本传递给marked.parse进行解析转换为HTML
+                const htmlContent = marked.parse(mdText);
+                document.getElementById('content').innerHTML = htmlContent;
+            })
+          .catch(error => {
+                console.error('读取文件出现错误：', error);
+            });
+    </script>
+</body>
+
+</html>
