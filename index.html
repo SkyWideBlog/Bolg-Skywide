@@ -152,17 +152,18 @@
     <script src="layui/layui.js"></script>
     <script src="marked/marked.min.js"></script>
     <script>
-      document.getElementById('content').innerHTML =
-      marked.parse('# Marked in browser\n\nRendered by **marked**.');
-       // 获取Markdown内容
-      var markdownContent = document.getElementById('markdown-content').innerHTML;
-      // 将Markdown转换为HTML
-      var htmlContent = marked(markdownContent);
-      // 创建一个新的元素来放置转换后的HTML
-      var newDiv = document.createElement('div');
-      newDiv.innerHTML = htmlContent;
-      // 将新元素插入到文档中，比如插入到另一个id为"output"的div中
-      document.getElementById('output').appendChild(newDiv);
+              // 使用fetch API发起异步请求读取外部md文件
+              fetch('marked/text01.md')
+               .then(response => response.text())
+               .then(mdText => {
+                  // 将读取到的Markdown文本传递给marked.parse进行解析转换为HTML
+                  const htmlContent = marked.parse(mdText);
+                  // 获取页面中id为content的元素，并将转换后的HTML设置进去
+                  document.getElementById('content1').innerHTML = htmlContent;
+                })
+               .catch(error => {
+                  console.error('读取文件出现错误：', error);
+                });
     layui.use(function() {
       // 获得需要的内置组件
       var layer = layui.layer; // 弹层
