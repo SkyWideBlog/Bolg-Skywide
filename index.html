@@ -66,20 +66,6 @@
           </div>
           <div class="layui-tab-item">
             <div id="content1"></div>
-            <script>
-              // 使用fetch API发起异步请求读取外部md文件
-              fetch('marked/text01.md')
-               .then(response => response.text())
-               .then(mdText => {
-                  // 将读取到的Markdown文本传递给marked.parse进行解析转换为HTML
-                  const htmlContent = marked.parse(mdText);
-                  // 获取页面中id为content的元素，并将转换后的HTML设置进去
-                  document.getElementById('content1').innerHTML = htmlContent;
-                })
-               .catch(error => {
-                  console.error('读取文件出现错误：', error);
-                });
-            </script>
           </div>
           <div class="layui-tab-item">内容-3</div>
           <div class="layui-tab-item">内容-4</div>
@@ -152,18 +138,6 @@
     <script src="layui/layui.js"></script>
     <script src="marked/marked.min.js"></script>
     <script>
-              // 使用fetch API发起异步请求读取外部md文件
-              fetch('marked/text01.md')
-               .then(response => response.text())
-               .then(mdText => {
-                  // 将读取到的Markdown文本传递给marked.parse进行解析转换为HTML
-                  const htmlContent = marked.parse(mdText);
-                  // 获取页面中id为content的元素，并将转换后的HTML设置进去
-                  document.getElementById('content1').innerHTML = htmlContent;
-                })
-               .catch(error => {
-                  console.error('读取文件出现错误：', error);
-                });
     layui.use(function() {
       // 获得需要的内置组件
       var layer = layui.layer; // 弹层
